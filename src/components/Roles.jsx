@@ -11,7 +11,7 @@ const Roles = () => {
   const navigate = useNavigate();
 
   const fetchRoles = async () => {
-    const response = await axios.get('http://localhost:5000/roles');
+    const response = await axios.get('https://rbac-backend-0t2i.onrender.com/roles');
     setRoles(response.data);
   };
 
@@ -22,9 +22,9 @@ const Roles = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editMode) {
-      await axios.put(`http://localhost:5000/roles/${formData._id}`, formData);
+      await axios.put(`https://rbac-backend-0t2i.onrender.com/roles/${formData._id}`, formData);
     } else {
-      await axios.post('http://localhost:5000/roles', formData).then((res) => {
+      await axios.post('https://rbac-backend-0t2i.onrender.com/roles', formData).then((res) => {
         setRoles([...roles, res.data]);
       });
     }
@@ -41,7 +41,7 @@ const Roles = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/roles/${id}`);
+      await axios.delete(`https://rbac-backend-0t2i.onrender.com/roles/${id}`);
       fetchRoles();
     } catch (error) {
       console.error('Error deleting role:', error.message);

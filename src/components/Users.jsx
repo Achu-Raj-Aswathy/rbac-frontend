@@ -11,7 +11,7 @@ const Users = () => {
   const navigate = useNavigate();
 
   const fetchUsers = async () => {
-    const response = await axios.get("http://localhost:5000/users");
+    const response = await axios.get("https://rbac-backend-0t2i.onrender.com/users");
     setUsers(response.data);
   };
 
@@ -22,9 +22,9 @@ const Users = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editMode) {
-      await axios.put(`http://localhost:5000/users/${formData._id}`, formData);
+      await axios.put(`https://rbac-backend-0t2i.onrender.com/users/${formData._id}`, formData);
     } else {
-      await axios.post('http://localhost:5000/users', formData).then((res) => {
+      await axios.post('https://rbac-backend-0t2i.onrender.com/users', formData).then((res) => {
         setUsers([...users, res.data]);
       });
     }
@@ -42,7 +42,7 @@ const Users = () => {
   const handleDelete = async (id) => {
     try {
       console.log('Attempting to delete user with ID:', id);
-      await axios.delete(`http://localhost:5000/users/${id}`);
+      await axios.delete(`https://rbac-backend-0t2i.onrender.com/users/${id}`);
       fetchUsers();
     } catch (error) {
       console.error('Error deleting user:', error.message);
